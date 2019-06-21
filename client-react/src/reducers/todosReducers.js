@@ -4,7 +4,7 @@ const initialState = {
     toDoList: []
 };
 
-export default function toDoApp(state = initialState, action) {
+export default function todosReducers(state = initialState, action) {
     switch (action.type) {
         case RENDER_TODO_LIST:
             return {

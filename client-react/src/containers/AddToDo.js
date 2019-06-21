@@ -36,6 +36,7 @@ let AddToDo = ({ dispatch }) => {
         </Form>
     );
 };
+
 AddToDo = connect()(AddToDo);
 
 export default AddToDo;

@@ -1,13 +1,20 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import ToDoList from '../components/ToDoList';
+import { loadToDoList } from '../actions';
+
+const mapDispatchToProps = dispatch => {
+    return {
+        actions: bindActionCreators(loadToDoList, dispatch)
+    };
+}
 
 const mapStateToProps = state => {
-	console.log(state, 'binh')
     return {
-        toDoList: state.toDoList
+        toDoList: state.todosReducers.toDoList
     };
 };
 
-const ToDoListContainer = connect(mapStateToProps)(ToDoList);
+const ToDoListContainer = connect(mapStateToProps, mapDispatchToProps)(ToDoList);
 
 export default ToDoListContainer;

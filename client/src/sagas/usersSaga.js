@@ -6,13 +6,10 @@ import * as types from '../constants/actionTypes';
 function registerUserApi(data) {
     return registerUser(data)
         .then(response => {
-
             if (response.data.token) {
-                localStorage.setItem('token', 123);
+                localStorage.setItem('token', response.data.token);
             }
 
-            console.log(response.data)
-            
             return { ...response.data };
         })
         .catch(error => ({ ...error.response.data }))

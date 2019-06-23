@@ -9,20 +9,31 @@ const i18n = require('i18n');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const helmet = require('helmet')
+const cors = require('cors');
 
-const settings = require('./config/settings');
-const database = require('./config/database');
+const configure = require('./config/configure');
 
 const index = require('./routes/index');
 const api = require('./routes/api');
 
 const app = express();
 
-mongoose.connect(database.db, {useNewUrlParser: true});
+app.use(helmet())
+app.use(
+    cors({
+        origin: [process.env.CLIENT_ORIGIN],
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+        credentials: true,
+    })
+);
+
+mongoose.connect(configure.db, { useNewUrlParser: true });
 mongoose.connection.on('error', function(err) {
     console.log('Error connect to Database: ' + err);
 });
 
+app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -49,7 +60,7 @@ i18n.configure({
 });
 
 app.use(session({
-    secret: settings.secured_key,
+    secret: configure.SECURED_KEY,
     resave: false,
     saveUninitialized: false
 }));
@@ -61,7 +72,6 @@ app.use(function(req, res, next) {
 app.use(function(req, res, next) {
     res.locals.clanguage = req.getLocale(); // Ngôn ngữ hiện tại
     res.locals.languages = i18n.getLocales(); // Danh sách ngôn ngữ khai báo trong phần cấu hình bên trên.
-    res.locals.settings = settings;
     // res.locals.logged = req.isAuthenticated();
     // res.locals.member = req.user;
     next();

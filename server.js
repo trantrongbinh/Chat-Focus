@@ -7,7 +7,7 @@
 require('dotenv').config();
 
 const app = require('./app');
-const debug = require('debug')('bkfa-system-chat:server');
+const debug = require('debug')('server'); // Run command in other terminal: DEBUG=server node server.js
 const http = require('http');
 
 /**

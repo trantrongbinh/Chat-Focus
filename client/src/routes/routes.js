@@ -1,3 +1,4 @@
+import Home from '../pages';
 import Register from '../components/users/Register';
 
 const routes = [
@@ -5,7 +6,7 @@ const routes = [
     path: '/',
     exact: true,
     auth: false,
-    component: Register,
+    component: Home,
   },
   //notFound
   // {

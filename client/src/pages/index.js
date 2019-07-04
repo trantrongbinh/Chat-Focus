@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 
-import styles from './home.css';
+import styles from './home.scss';
 
 const { Header, Content, Footer } = Layout;
 
@@ -28,7 +28,7 @@ class Home extends React.Component {
                         <Breadcrumb.Item>List</Breadcrumb.Item>
                         <Breadcrumb.Item>App</Breadcrumb.Item>
                     </Breadcrumb>
-                    <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Content</div>
+                    <div className="home-content">Content</div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
             </Layout>

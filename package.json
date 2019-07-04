@@ -6,8 +6,11 @@
     "express",
     "mongoose",
     "mongodb",
-    "Bkfa",
-    "TTB"
+    "react",
+    "redux",
+    "redux-saga",
+    "antd-design",
+    "socket.io"
   ],
   "author": "Bkfa - Tran Trong Binh",
   "license": "MIT",
@@ -18,9 +21,9 @@
     "setup": "npm install && cd client && npm install",
     "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run start\"",
     "client": "npm run start --prefix client",
-    "start": "cross-env NODE_ENV=development nodemon server.js",
-    "test": "cross-env NODE_ENV=test server.js",
-    "prod": "cross-env NODE_ENV=production server.js"
+    "start": "cross-env NODE_ENV=development nodemon server/server.js",
+    "test": "cross-env NODE_ENV=test nodemon server/server.js",
+    "prod": "cross-env NODE_ENV=production node server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -39,7 +42,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.2",
     "morgan": "^1.9.1",
-    "path": "^0.12.7",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {

@@ -42,6 +42,6 @@
   "devDependencies": {
     "prop-types": "^15.7.2",
     "babel-loader": "^8.0.5",
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   }
 }
